@@ -9,29 +9,40 @@
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
 
-        <Label Content="Weekly Exercise"
+        <materialDesign:Card Background="{DynamicResource AppBackGround}"
+                             Grid.Column="0"
+                             Margin="10 10 5 10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Label Content="Weekly Exercise"
                        Grid.Row="0"
+               Grid.Column="0"
                        Style="{DynamicResource LabelHeader}" />
 
-        <Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
+                <Grid Grid.Row="1"
+              Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
 
-            <materialDesign:MaterialDateDisplay DisplayDate="{Binding PreviousStartDate, UpdateSourceTrigger=PropertyChanged}"
+                    <materialDesign:MaterialDateDisplay DisplayDate="{Binding PreviousStartDate, UpdateSourceTrigger=PropertyChanged}"
                                                         Grid.Column="1"
                                                         Grid.Row="1"
                                                         FontSize="16"
@@ -40,7 +51,7 @@
                                                         Foreground="{DynamicResource AppAccent}"
                                                         materialDesign:HintAssist.Hint="Week Start" />
 
-            <TextBlock Text="to"
+                    <TextBlock Text="to"
                                Grid.Column="2"
                                Grid.Row="1"
                                FontSize="16"
@@ -48,7 +59,7 @@
                                HorizontalAlignment="Center"
                                Foreground="{DynamicResource AppAccent}" />
 
-            <materialDesign:MaterialDateDisplay DisplayDate="{Binding CurrentEndDate, UpdateSourceTrigger=PropertyChanged}"
+                    <materialDesign:MaterialDateDisplay DisplayDate="{Binding CurrentEndDate, UpdateSourceTrigger=PropertyChanged}"
                                                         Grid.Column="3"
                                                         Grid.Row="1"
                                                         FontSize="16"
@@ -56,7 +67,7 @@
                                                         HorizontalAlignment="Center"
                                                         Foreground="{DynamicResource AppAccent}" />
 
-            <DatePicker x:Name="dateSelector"
+                    <DatePicker x:Name="dateSelector"
                                 Grid.Column="0"
                                 Grid.Row="1"
                                 VerticalAlignment="Center"
@@ -69,17 +80,17 @@
                                 SelectedDateChanged="DatePicker_SelectedDateChanged"
                                 SelectedDate="{Binding SelectedDate}"
                                 materialDesign:HintAssist.Hint="Selected Date" />
-        </Grid>
+                </Grid>
 
-        <lvc:CartesianChart Grid.Row="2"
-                                    x:Name="myChart"
-                                    Margin="10"
-                                    MinHeight="200"
-                                    LegendLocation="Bottom"
-                                    Foreground="{DynamicResource AppWhite}">
+                <lvc:CartesianChart Grid.Column="0"
+                            Grid.Row="2"
+                            x:Name="myChart"
+                            Margin="10"
+                            LegendLocation="Bottom"
+                            Foreground="{DynamicResource AppWhite}">
 
-            <lvc:CartesianChart.Series>
-                <lvc:LineSeries Values="{Binding CurrentWeekValues, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
+                    <lvc:CartesianChart.Series>
+                        <lvc:LineSeries Values="{Binding CurrentWeekValues, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
                                         LineSmoothness="0"
                                         StrokeThickness="2"
                                         DataLabels="True"
@@ -91,7 +102,7 @@
                                         PointForeground="{DynamicResource ChartFillPrimary}"
                                         Title="Current Week Calories" />
 
-                <lvc:LineSeries Values="{Binding PreviousWeekValues}"
+                        <lvc:LineSeries Values="{Binding PreviousWeekValues}"
                                         LineSmoothness="0"
                                         StrokeThickness="1"
                                         DataLabels="True"
@@ -102,38 +113,48 @@
                                         PointGeometrySize="10"
                                         PointForeground="{DynamicResource ChartFillSecondary}"
                                         Title="Previous Week Calories" />
-            </lvc:CartesianChart.Series>
+                    </lvc:CartesianChart.Series>
 
-            <lvc:CartesianChart.AxisX>
-                <lvc:Axis IsEnabled="False"
-                                  ShowLabels="True"
-                                  x:Name="AxisX"
-                                  Foreground="{DynamicResource AppWhite}">
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis IsEnabled="False"
+                          ShowLabels="True"
+                          x:Name="AxisX"
+                          Foreground="{DynamicResource AppWhite}">
 
-                    <lvc:Axis.Separator>
-                        <lvc:Separator StrokeThickness="0"
+                            <lvc:Axis.Separator>
+                                <lvc:Separator StrokeThickness="0"
                                                Stroke="{DynamicResource AppWhite}" />
-                    </lvc:Axis.Separator>
-                </lvc:Axis>
-            </lvc:CartesianChart.AxisX>
+                            </lvc:Axis.Separator>
+                        </lvc:Axis>
+                    </lvc:CartesianChart.AxisX>
 
-            <lvc:CartesianChart.AxisY>
-                <lvc:Axis Foreground="{DynamicResource AppWhite}"
-                                  FontSize="10">
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis Foreground="{DynamicResource AppWhite}"
+                          FontSize="10">
 
-                    <lvc:Axis.Separator>
-                        <lvc:Separator StrokeThickness="1"
-                                               Stroke="{DynamicResource AppHeader}"
-                                               StrokeDashArray="7"
-                                               Step="100" />
-                    </lvc:Axis.Separator>
-                </lvc:Axis>
-            </lvc:CartesianChart.AxisY>
+                            <lvc:Axis.Separator>
+                                <lvc:Separator StrokeThickness="1"
+                                       Stroke="{DynamicResource AppHeader}"
+                                       StrokeDashArray="7"
+                                       Step="100" />
+                            </lvc:Axis.Separator>
+                        </lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
 
-            <lvc:CartesianChart.DataTooltip>
-                <lvc:DefaultTooltip>
-                </lvc:DefaultTooltip>
-            </lvc:CartesianChart.DataTooltip>
-        </lvc:CartesianChart>
+                    <lvc:CartesianChart.DataTooltip>
+                        <lvc:DefaultTooltip>
+                        </lvc:DefaultTooltip>
+                    </lvc:CartesianChart.DataTooltip>
+                </lvc:CartesianChart>
+            </Grid>
+        </materialDesign:Card>
+
+        <materialDesign:Card Background="{DynamicResource AppBackGround}"
+                             Grid.Column="1"
+                             Margin="5 10 10 10">
+            <Grid>
+                <ContentPresenter Content="{Binding SummaryPanel}" />
+            </Grid>
+        </materialDesign:Card>
     </Grid>
 </UserControl>

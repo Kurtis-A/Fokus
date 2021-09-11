@@ -82,5 +82,7 @@ namespace Fokus.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        public object SummaryPanel { get; set; }
     }
 }

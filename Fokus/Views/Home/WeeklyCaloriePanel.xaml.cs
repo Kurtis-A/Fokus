@@ -36,6 +36,8 @@ namespace Fokus.Views
             Load(DateTime.Now);
         }
 
+        public object SummaryPanel { get; set; }
+
         private void Load(DateTime date)
         {
             AxisX.Labels = new List<string>() { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
@@ -45,6 +47,7 @@ namespace Fokus.Views
 
             LoadCurrentWeek(date);
             LoadPreviousWeek(date);
+            LoadSummaryPanel();
 
             myChart.LegendLocation = LegendLocation.Bottom;
 
@@ -85,6 +88,12 @@ namespace Fokus.Views
             }
 
             myChart.Update();
+        }
+
+        private void LoadSummaryPanel()
+        {
+            var panel = new WeeklyCalorieSummary(Activity);
+            burntViewModel.SummaryPanel = panel;
         }
 
         private Dictionary<string, DateTime> GetCurrentWeekDates(DateTime selectedDate)

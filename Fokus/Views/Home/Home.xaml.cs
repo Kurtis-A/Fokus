@@ -38,6 +38,8 @@ namespace Fokus.Views
             var caloriesPanel = new WeeklyCaloriePanel(Activity);
             TopPanel = caloriesPanel;
 
+            var calorieSummary = new WeeklyCalorieSummary(Activity);
+
             DataContext = this;
         }
     }
