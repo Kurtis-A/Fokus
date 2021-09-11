@@ -47,6 +47,8 @@ namespace Fokus.Views
             LoadCurrentWeek(date);
             LoadPreviousWeek(date);
 
+            myChart.LegendLocation = LegendLocation.Bottom;
+
             DataContext = burntViewModel;
         }
 

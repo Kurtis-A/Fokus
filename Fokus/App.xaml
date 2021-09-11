@@ -11,9 +11,17 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <SolidColorBrush x:Key="AppPrimaryOrange" Color="Orange" />
-            <SolidColorBrush x:Key="AppPrimaryWhite" Color="WhiteSmoke" />
-            <SolidColorBrush x:Key="AppGraphiteGray" Color="#FF232323" />
+            <SolidColorBrush x:Key="AppAccent" Color="#C99383" />
+            <SolidColorBrush x:Key="AppWhite" Color="WhiteSmoke" />
+
+            <SolidColorBrush x:Key="AppHeader" Color="#2D3141" />
+            <SolidColorBrush x:Key="AppBackGround" Color="#FF353949" />
+
+            <SolidColorBrush x:Key="ChartPrimary" Color="#C99383" />
+            <SolidColorBrush x:Key="ChartFillPrimary" Color="#66C99383" />
+
+            <SolidColorBrush x:Key="ChartSecondary" Color="#FF958580" />
+            <SolidColorBrush x:Key="ChartFillSecondary" Color="#66958580" />
 
             <Style x:Key="LabelTitle" TargetType="Label">
                 <Setter Property="VerticalAlignment" Value="Center" />
@@ -21,7 +29,7 @@
                 <Setter Property="FontSize" Value="28" />
                 <Setter Property="FontFamily" Value="Segoe UI Semibold" />
                 <Setter Property="Margin" Value="10 0" />
-                <Setter Property="Foreground" Value="{DynamicResource AppPrimaryOrange}" />
+                <Setter Property="Foreground" Value="{DynamicResource AppAccent}" />
             </Style>
 
             <Style x:Key="LabelHeader" TargetType="Label">
@@ -30,14 +38,14 @@
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="FontFamily" Value="Segoe UI Semibold" />
                 <Setter Property="Margin" Value="10 0" />
-                <Setter Property="Foreground" Value="{DynamicResource AppPrimaryOrange}" />
+                <Setter Property="Foreground" Value="{DynamicResource AppAccent}" />
             </Style>
 
             <Style x:Key="AppIcons" TargetType="materialDesign:PackIcon">
                 <Setter Property="VerticalAlignment" Value="Center" />
                 <Setter Property="HorizontalAlignment" Value="Center" />
                 <Setter Property="Margin" Value="5 0" />
-                <Setter Property="Foreground" Value="{DynamicResource AppPrimaryOrange}" />
+                <Setter Property="Foreground" Value="{DynamicResource AppAccent}" />
                 <Setter Property="Width" Value="20" />
                 <Setter Property="Height" Value="20" />
             </Style>
@@ -47,7 +55,7 @@
                 <Setter Property="HorizontalAlignment" Value="Left" />
                 <Setter Property="Margin" Value="10 0" />
                 <Setter Property="FontSize" Value="16" />
-                <Setter Property="Foreground" Value="{DynamicResource AppPrimaryOrange}" />
+                <Setter Property="Foreground" Value="{DynamicResource AppAccent}" />
             </Style>
 
             <Style x:Key="ButtonWindowControl" TargetType="Button" BasedOn="{StaticResource MaterialDesignFloatingActionButton}">
@@ -55,8 +63,8 @@
                 <Setter Property="HorizontalAlignment" Value="Center" />
                 <Setter Property="Width" Value="30" />
                 <Setter Property="Height" Value="30" />
-                <Setter Property="Background" Value="{DynamicResource AppPrimaryOrange}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource AppPrimaryOrange}" />
+                <Setter Property="Background" Value="{DynamicResource AppHeader}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource AppHeader}" />
                 <Setter Property="Margin" Value="10" />
             </Style>
         </ResourceDictionary>

@@ -14,7 +14,8 @@
         </Grid.RowDefinitions>
 
         <materialDesign:Card Margin="10"
-                             Grid.Column="0">
+                             Grid.Column="0"
+                             Background="{DynamicResource AppBackGround}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
@@ -44,7 +45,7 @@
                                                         FontSize="16"
                                                         VerticalAlignment="Center"
                                                         HorizontalAlignment="Center"
-                                                        Foreground="{DynamicResource AppGraphiteGray}"
+                                                        Foreground="{DynamicResource AppAccent}"
                                                         materialDesign:HintAssist.Hint="Week Start" />
 
                     <TextBlock Text="to"
@@ -53,7 +54,7 @@
                                FontSize="16"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"
-                               Foreground="{DynamicResource AppGraphiteGray}" />
+                               Foreground="{DynamicResource AppAccent}" />
 
                     <materialDesign:MaterialDateDisplay DisplayDate="{Binding CurrentEndDate, UpdateSourceTrigger=PropertyChanged}"
                                                         Grid.Column="3"
@@ -61,7 +62,7 @@
                                                         FontSize="16"
                                                         VerticalAlignment="Center"
                                                         HorizontalAlignment="Center"
-                                                        Foreground="{DynamicResource AppGraphiteGray}" />
+                                                        Foreground="{DynamicResource AppAccent}" />
 
                     <DatePicker x:Name="dateSelector"
                                 Grid.Column="0"
@@ -69,7 +70,8 @@
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Stretch"
                                 Margin="10"
-                                Foreground="{DynamicResource AppPrimaryWhite}"
+                                Foreground="{DynamicResource AppAccent}"
+                                BorderBrush="{DynamicResource AppAccent}"
                                 Style="{DynamicResource MaterialDesignFilledDatePicker}"
                                 SelectedDateFormat="Short"
                                 SelectedDateChanged="DatePicker_SelectedDateChanged"
@@ -80,18 +82,21 @@
                 <lvc:CartesianChart Grid.Row="2"
                                     x:Name="myChart"
                                     Margin="10"
-                                    MinHeight="200">
+                                    MinHeight="200"
+                                    LegendLocation="Bottom"
+                                    Foreground="{DynamicResource AppWhite}">
 
                     <lvc:CartesianChart.Series>
                         <lvc:LineSeries Values="{Binding CurrentWeekValues, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
                                         LineSmoothness="0"
                                         StrokeThickness="2"
                                         DataLabels="True"
-                                        FontSize="12"
-                                        Foreground="{DynamicResource AppPrimaryWhite}"
-                                        Stroke="{DynamicResource AppPrimaryOrange}"
-                                        Fill="Transparent"
+                                        FontSize="10"
+                                        Foreground="{DynamicResource AppWhite}"
+                                        Stroke="{DynamicResource ChartPrimary}"
+                                        Fill="{DynamicResource ChartFillPrimary}"
                                         PointGeometrySize="10"
+                                        PointForeground="{DynamicResource ChartFillPrimary}"
                                         Title="Current Week Calories" />
 
                         <lvc:LineSeries Values="{Binding PreviousWeekValues}"
@@ -99,10 +104,11 @@
                                         StrokeThickness="1"
                                         DataLabels="True"
                                         FontSize="10"
-                                        Foreground="{DynamicResource AppPrimaryWhite}"
-                                        Stroke="{DynamicResource AppGraphiteGray}"
-                                        Fill="Transparent"
+                                        Foreground="{DynamicResource AppWhite}"
+                                        Stroke="{DynamicResource ChartSecondary}"
+                                        Fill="{DynamicResource ChartFillSecondary}"
                                         PointGeometrySize="10"
+                                        PointForeground="{DynamicResource ChartFillSecondary}"
                                         Title="Previous Week Calories" />
                     </lvc:CartesianChart.Series>
 
@@ -110,22 +116,22 @@
                         <lvc:Axis IsEnabled="False"
                                   ShowLabels="True"
                                   x:Name="AxisX"
-                                  Foreground="{DynamicResource AppPrimaryWhite}">
+                                  Foreground="{DynamicResource AppWhite}">
 
                             <lvc:Axis.Separator>
                                 <lvc:Separator StrokeThickness="0"
-                                               Stroke="{DynamicResource AppGraphiteGray}" />
+                                               Stroke="{DynamicResource AppWhite}" />
                             </lvc:Axis.Separator>
                         </lvc:Axis>
                     </lvc:CartesianChart.AxisX>
 
                     <lvc:CartesianChart.AxisY>
-                        <lvc:Axis Foreground="{DynamicResource AppGraphiteGray}"
+                        <lvc:Axis Foreground="{DynamicResource AppWhite}"
                                   FontSize="10">
 
                             <lvc:Axis.Separator>
                                 <lvc:Separator StrokeThickness="1"
-                                               Stroke="{DynamicResource AppGraphiteGray}"
+                                               Stroke="{DynamicResource AppHeader}"
                                                StrokeDashArray="6"
                                                Step="100" />
                             </lvc:Axis.Separator>

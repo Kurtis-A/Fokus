@@ -11,7 +11,7 @@
         WindowStyle="None"
         AllowsTransparency="True"
         ResizeMode="NoResize"
-        Background="{DynamicResource MaterialDesignPaper}"
+        Background="{DynamicResource AppBackGround}"
         WindowStartupLocation="CenterScreen"
         MouseDown="Window_MouseDown">
     <Grid>
@@ -25,7 +25,8 @@
                           Grid.Row="2" />
 
         <Menu Grid.Row="1"
-              HorizontalAlignment="Center">
+              HorizontalAlignment="Center"
+              Background="Transparent">
             <Menu.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel Orientation="Horizontal" />
@@ -63,7 +64,7 @@
 
         <!--Window Header-->
         <materialDesign:Card Grid.Row="0"
-                             Background="{DynamicResource AppGraphiteGray}">
+                             Background="{DynamicResource AppHeader}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -99,7 +100,7 @@
 
                         <materialDesign:PackIcon Kind="WindowMinimize"
                                                  Style="{DynamicResource AppIcons}"
-                                                 Foreground="{DynamicResource AppGraphiteGray}" />
+                                                 Foreground="{DynamicResource AppAccent}" />
                     </Button>
 
                     <Button Style="{DynamicResource ButtonWindowControl}"
@@ -107,7 +108,7 @@
 
                         <materialDesign:PackIcon Kind="WindowMaximize"
                                                  Style="{DynamicResource AppIcons}"
-                                                 Foreground="{DynamicResource AppGraphiteGray}" />
+                                                 Foreground="{DynamicResource AppAccent}" />
                     </Button>
 
                     <Button Style="{DynamicResource ButtonWindowControl}"
@@ -115,7 +116,7 @@
 
                         <materialDesign:PackIcon Kind="WindowClose"
                                                  Style="{DynamicResource AppIcons}"
-                                                 Foreground="{DynamicResource AppGraphiteGray}" />
+                                                 Foreground="{DynamicResource AppAccent}" />
                     </Button>
                 </StackPanel>
             </Grid>
