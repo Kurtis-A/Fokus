@@ -1,44 +1,43 @@
-﻿using Fokus.Services;
-using Fokus.ViewModels;
+﻿using Fokus.ViewModels;
 using LiveCharts;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
+using System.Text;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace Fokus.Views
 {
     /// <summary>
-    /// Interaction logic for Home.xaml
+    /// Interaction logic for WeeklyCaloriePanel.xaml
     /// </summary>
-    public partial class Home : UserControl, INotifyPropertyChanged
+    public partial class WeeklyCaloriePanel : UserControl
     {
-        private readonly ActivityService _service;
-
+        private ObservableCollection<ActivityViewModel> Activity;
         private HomeCalorieBurntViewModel burntViewModel;
 
-        private ObservableCollection<ActivityViewModel> Activity;
-
-        public Home(ActivityService service)
+        public WeeklyCaloriePanel(ObservableCollection<ActivityViewModel> activitiesCollection)
         {
             InitializeComponent();
 
-            _service = service;
+            Activity = activitiesCollection;
 
             burntViewModel = new HomeCalorieBurntViewModel();
 
-            LoadAsync(DateTime.Now);
+            Load(DateTime.Now);
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private async void LoadAsync(DateTime date)
+        private void Load(DateTime date)
         {
-            Activity = new ObservableCollection<ActivityViewModel>(await _service.FetchActivities());
-
             AxisX.Labels = new List<string>() { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
 
             burntViewModel.CurrentWeekValues = new ChartValues<double>();
@@ -123,12 +122,7 @@ namespace Fokus.Views
             if (dateSelector.DisplayDate == null) return;
 
             if (dateSelector.DisplayDate.ToShortDateString() != burntViewModel.SelectedDate.ToShortDateString())
-                LoadAsync(DateTime.Parse(sender.ToString()));
-        }
-
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+                Load(DateTime.Parse(sender.ToString()));
         }
     }
 }

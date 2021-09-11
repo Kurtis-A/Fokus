@@ -20,4 +20,8 @@
     <ProjectReference Include="..\Fokus.Data\Fokus.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewModels\Home\" />
+  </ItemGroup>
+
 </Project>
