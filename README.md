@@ -12,3 +12,6 @@ Fitness Desktop App to visualise daily acitivities, food consumption and weight 
 - Back End: SQL Database
 
 - Design Pattern(s): MVVM, DI, EF Core
+
+![Fokus Home](https://user-images.githubusercontent.com/69115508/132943920-bbdea93d-400a-4236-b944-b03736a0f27e.PNG)
+
