@@ -1,12 +1,5 @@
 ﻿using Fokus.Services;
-using Fokus.ViewModels;
-using LiveCharts;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Windows.Controls;
 
 namespace Fokus.Views
@@ -37,8 +30,6 @@ namespace Fokus.Views
 
             var caloriesPanel = new WeeklyCaloriePanel(Activity);
             TopPanel = caloriesPanel;
-
-            var calorieSummary = new WeeklyCalorieSummary(Activity);
 
             DataContext = this;
         }

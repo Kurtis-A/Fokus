@@ -4,16 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Fokus.Views
 {
@@ -42,6 +33,8 @@ namespace Fokus.Views
         {
             AxisX.Labels = new List<string>() { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
 
+            burntViewModel.SelectedDate = date;
+
             burntViewModel.CurrentWeekValues = new ChartValues<double>();
             burntViewModel.PreviousWeekValues = new ChartValues<double>();
 
@@ -58,13 +51,13 @@ namespace Fokus.Views
         {
             var currentWeekDates = GetCurrentWeekDates(date);
 
-            var currentStartDate = currentWeekDates.FirstOrDefault(c => c.Key == "start").Value;
-            var currentEndDate = currentWeekDates.FirstOrDefault(c => c.Key == "end").Value;
+            burntViewModel.CurrentStartDate = currentWeekDates.FirstOrDefault(c => c.Key == "start").Value;
+            burntViewModel.CurrentEndDate = currentWeekDates.FirstOrDefault(c => c.Key == "end").Value;
 
-            burntViewModel.CurrentStartDate = currentStartDate.ToString("dddd, dd MMM y");
-            burntViewModel.CurrentEndDate = currentEndDate.ToString("dddd, dd MMM y");
+            burntViewModel.DisplayCurrentStartDate = burntViewModel.CurrentStartDate.ToString("dddd, dd MMM y");
+            burntViewModel.DisplayCurrentEndDate = burntViewModel.CurrentEndDate.ToString("dddd, dd MMM y");
 
-            foreach (var item in Activity.Where(a => a.Created >= currentStartDate && a.Created <= currentEndDate).OrderBy(c => c.Created))
+            foreach (var item in Activity.Where(a => a.Created >= burntViewModel.CurrentStartDate && a.Created <= burntViewModel.CurrentEndDate).OrderBy(c => c.Created))
             {
                 burntViewModel.CurrentWeekValues.Add(item.Calories);
             }
@@ -79,8 +72,8 @@ namespace Fokus.Views
             var previousStartDate = previousWeekDates.FirstOrDefault(c => c.Key == "start").Value;
             var previousEndDate = previousWeekDates.FirstOrDefault(c => c.Key == "end").Value;
 
-            burntViewModel.PreviousStartDate = previousStartDate.ToString("dddd, dd MMM y");
-            burntViewModel.PreviousEndDate = previousEndDate.ToString("dddd, dd MMM y");
+            burntViewModel.DisplayPreviousStartDate = previousStartDate.ToString("dddd, dd MMM y");
+            burntViewModel.DisplayPreviousEndDate = previousEndDate.ToString("dddd, dd MMM y");
 
             foreach (var item in Activity.Where(a => a.Created >= previousStartDate && a.Created <= previousEndDate).OrderBy(c => c.Created))
             {
@@ -92,7 +85,8 @@ namespace Fokus.Views
 
         private void LoadSummaryPanel()
         {
-            var panel = new WeeklyCalorieSummary(Activity);
+            burntViewModel.SummaryPanel = null;
+            var panel = new WeeklyCalorieSummary(Activity, burntViewModel);
             burntViewModel.SummaryPanel = panel;
         }
 

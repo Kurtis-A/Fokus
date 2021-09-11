@@ -1,7 +1,5 @@
 ﻿using LiveCharts;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Fokus.ViewModels
 {
@@ -14,6 +12,7 @@ namespace Fokus.ViewModels
         private string previousEndDate;
         private ChartValues<double> currentWeekValues;
         private ChartValues<double> previousWeekValues;
+        private object summaryPanel;
 
         public HomeCalorieBurntViewModel()
         {
@@ -29,7 +28,11 @@ namespace Fokus.ViewModels
             }
         }
 
-        public string CurrentStartDate
+        public DateTime CurrentStartDate { get; set; }
+
+        public DateTime CurrentEndDate { get; set; }
+
+        public string DisplayCurrentStartDate
         {
             get => currentStartDate; set
             {
@@ -38,7 +41,7 @@ namespace Fokus.ViewModels
             }
         }
 
-        public string CurrentEndDate
+        public string DisplayCurrentEndDate
         {
             get => currentEndDate; set
             {
@@ -47,7 +50,7 @@ namespace Fokus.ViewModels
             }
         }
 
-        public string PreviousStartDate
+        public string DisplayPreviousStartDate
         {
             get => previousStartDate; set
             {
@@ -56,7 +59,7 @@ namespace Fokus.ViewModels
             }
         }
 
-        public string PreviousEndDate
+        public string DisplayPreviousEndDate
         {
             get => previousEndDate; set
             {
@@ -83,6 +86,14 @@ namespace Fokus.ViewModels
             }
         }
 
-        public object SummaryPanel { get; set; }
+        public object SummaryPanel
+        {
+            get => summaryPanel;
+            set
+            {
+                summaryPanel = value;
+                OnPropertyChanged();
+            }
+        }
     }
 }
