@@ -85,7 +85,7 @@
                     <materialDesign:PackIcon Kind="Calendar"
                                              Style="{DynamicResource AppIcons}" />
 
-                    <TextBlock Text="07/09/2021"
+                    <TextBlock Text="{Binding Date}"
                                Style="{DynamicResource AppIconText}" />
                 </StackPanel>
 

@@ -15,7 +15,7 @@ namespace Fokus
     /// </summary>
     public partial class App : Application
     {
-        private ServiceProvider ServiceProvider;
+        private readonly ServiceProvider ServiceProvider;
 
         public App()
         {
