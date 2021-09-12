@@ -122,7 +122,7 @@ namespace Fokus.Views
 
         private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (dateSelector.DisplayDate == null) return;
+            if (dateSelector.DisplayDate == null && sender.ToString() != null) return;
 
             if (dateSelector.DisplayDate.ToShortDateString() != burntViewModel.SelectedDate.ToShortDateString())
                 Load(DateTime.Parse(sender.ToString()));
